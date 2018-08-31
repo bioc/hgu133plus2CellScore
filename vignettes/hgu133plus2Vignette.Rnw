@@ -89,14 +89,15 @@ additionally need to install the core Bioconductor packages if these have not
 already been installed:
 
 <<eval=FALSE>>=
-source("https://bioconductor.org/biocLite.R")
-biocLite()
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install()
 @
 
 To install the \pkg{hgu133plus2CellScore} package from the Bioconductor repository:
 
 <<eval=FALSE>>=
-biocLite("hgu133plus2CellScore")
+BiocManager::install("hgu133plus2CellScore")
 @
 <<eval=TRUE, echo=FALSE, cache=FALSE>>=
 options(BIOCINSTALLER_ONLINE_DCF=FALSE)
@@ -214,8 +215,9 @@ Here are some example commands on how to process the *.CEL files:
 
 <<eval=FALSE>>=
 ## Install affy
-source("https://bioconductor.org/biocLite.R")
-biocLite("affy")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("affy")
 ## Install YuGene
 install.packages("YuGene")
 
